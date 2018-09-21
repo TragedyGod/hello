@@ -156,7 +156,7 @@ namespace _020_练习4
                 if (i % 7 == 0)
                 {
                     int[] a;
-                    a=new int[100];
+                    a=new int[1000];
                     a[num2] = i;
                     Console.WriteLine(i);
                     num2++;
@@ -226,22 +226,21 @@ namespace _020_练习4
 ****练习7:输出1000以内的素数***
 **********************************");
             Console.WriteLine('\n'+ "1000以内的素数");
-            for (int i = 0;i<=1000; i++)
+            for (int i = 2; i <= 1000; i++)
             {
-                bool isFind=true;
-                for(int j=0; j <= 1000; j++)
+                bool flag = true;
+                for (int j = 2; j < i; j++)
                 {
                     if (i % j == 0)
                     {
-                        isFind = false;
+                        flag = false;
                         break;
                     }
                 }
-                if (isFind)
-                {
-                    Console.WriteLine( i);
-                }
+                if (flag)
+                    Console.Write(i + "  ");
             }
+            Console.ReadKey();
         }
         static void Training_8()
         {
@@ -250,19 +249,20 @@ namespace _020_练习4
 ****练习8:九九乘法口诀***
 ***************************");
             Console.WriteLine('\n');
-            int i = 0;
-            int j = 0, num=1;
-            for (; i <= 9; i++)
+            for (int i = 1; i < 10; i++)   //控制行数,即从1行至9行
             {
-                for (; j <= 9; j++)
+                for (int j = 1; j < 10; j++)   //控制列数（行数增加时列数也随着增加）形成9行9列的效果
                 {
-                    num = j * i;
-                    Console.Write(num);
-                    
+                    if (j <= i)
+                    {
+                        Console.Write("{0}*{1}={2} \t", i, j, i * j);    //行数乘以列数得两数之积,"\t"表示将光标后移8位
+                    }
                 }
                 Console.WriteLine();
             }
+            Console.ReadKey();
         }
+    
         static void Training_9()
         {
             Console.Clear();
@@ -398,7 +398,7 @@ namespace _020_练习4
                 }
                 else { other++; }
             }
-            if (captial >= 1)
+            if (captial < 5)
             {
                 Console.WriteLine("您输入的字符串里5个字符并非全是大写字母");
                 Console.WriteLine("其中" + "\n小写字母有：" + lower + "个" + "\n数字有：" + num + "个"+"\n其他字符有："+other+"个");
@@ -434,28 +434,28 @@ namespace _020_练习4
         static void Training_13()
         {
             Console.Clear();
-            Console.WriteLine("施工中,按回车键返回");
-            Console.ReadKey();
-#if (false)
-            int[] num ;
-            num = new int[1000];
-            int i=0, k=0, j=0;
+            Console.WriteLine(@"**********************************
+***练习13：求1000内的完美数***
+**********************************");
+            Console.WriteLine('\n');
+            Console.WriteLine("1000以内的完数为：");
             //创建一个循环，遍历1到1000的数
-            for (j = 0; j <= 1000; j++)
+            for (int i = 2; i <= 1000; i++)
             {
-
+                string str = "1";
+                int s = 1;
+                int a = 0;
+                for(int j=2;j<=Convert.ToInt32(Math.Sqrt(i));j++)
+                {
+                    if (i % j == 0 && i != j)
+                    {
+                        a = i / j;
+                        s += j + a;
+                        str += string.Format("+{0}+{1}", j, a);
+                    }
+                }
+                if (s == i) { Console.WriteLine("{0}={1}", i, str); }
             }
-            //判断一个数是否有除了1和他本身之外的因数
-            for(i = 0; i <= 1000; i++)
-            {
-
-            }
-            //判断一个数是否是完数
-            for(k=0;k<=1000; k++)
-            {
-                num[k] = i;
-            }
-#endif
         }
     }
 }
