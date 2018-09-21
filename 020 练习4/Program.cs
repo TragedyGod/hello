@@ -10,6 +10,8 @@ namespace _020_练习4
     {
         static void Main(string[] args)
         {
+            Console.WriteLine( "选完题号以后按回车键即可返回选题界面");
+            start: Console.WriteLine("注意！想要退出可以输入0");
             Console.WriteLine("请输入你要查看的题号（1-13）：");
             int num = Convert.ToInt32(Console.ReadLine());
             switch (num)
@@ -54,13 +56,25 @@ namespace _020_练习4
                     Training_13();
                     break;
                 default:
-                    Console.WriteLine("输错了！");
+                    Console.WriteLine("输错了！"+'\n'+"如果想退出请输入：0"+"如果想重新输入请输入1");
+                    if (Convert.ToInt32(Console.Read()) == 0)
+                    {
+                        return;
+                    }else if(Convert.ToInt32(Console.Read()) == 1) { goto start; Console.Clear(); }
                     break;
             }
             Console.ReadKey();
+            Console.Clear();
+            goto start;
+            
         }
         static void Training_1()
         {
+            Console.Clear();
+            Console.WriteLine(@"**************************************************************
+****练习1：对输入的4个整数求出其中的最大值和最小值\n****
+**************************************************************");
+            Console.WriteLine('\n');
             int num1=0, num2=0, num3=0 ,num4=0; 
             Console.WriteLine("请输入第一个数字");
             num1 = Convert.ToInt32(Console.ReadLine());
@@ -99,6 +113,11 @@ namespace _020_练习4
         }
         static void Training_2()
         {
+            Console.Clear();
+            Console.WriteLine(@"**************
+****练习2 * ***
+**************");
+            Console.WriteLine('\n');
             Console.WriteLine("请输入第一个整数");
             int num1 = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("请输入第一个整数");
@@ -126,30 +145,39 @@ namespace _020_练习4
         }
         static void Training_3()
         {
-            int  num=0,i=0,num1=0,num2;
+            Console.Clear();
+            Console.WriteLine(@"*****************************************************************************
+****练习3:求出1∽1000之间的所有能被7整除的数，并计算输出每五个的和***
+*****************************************************************************");
+            Console.WriteLine('\n');
+            int  num=0,i=0,num1=0,num2=0;
             for (; i<=1000; i++)
             {
                 if (i % 7 == 0)
                 {
-                    
+                    int[] a;
+                    a=new int[100];
+                    a[num2] = i;
                     Console.WriteLine(i);
-                    if (i % 5 == 0)
+                    num2++;
+                    if (num2 % 5 == 0)
                     {
-                        num2 = num;
-                        num1 = i;
-                        num = num2 + num1;
-                        
+                        num = a[num2 - 5] + a[num2 - 4] + a[num2 - 3] + a[num2 - 2] + a[num2 - 1] + a[num2];
                     }
                     
                 }
-                Console.WriteLine(num);
+                Console.WriteLine("每五个的和："+num);
             }
             
         }
         static void Training_4()
         {
-            
-            for(double i=0; i<=100; i++)
+            Console.Clear();
+            Console.WriteLine(@"*********************************************
+****练习4:输出1∽100之间的平方、平方根***
+*********************************************");
+            Console.WriteLine('\n');
+            for (double i=0; i<=100; i++)
             {
                 Console.WriteLine("平方为："+i * i);
                 Console.WriteLine("平方根为：" + System.Math.Sqrt(i));
@@ -157,32 +185,48 @@ namespace _020_练习4
         }
         static void Training_5()
         {
+            Console.Clear();
+            Console.WriteLine(@"*****************************************************************************************************************
+****练习5:兔子繁殖问题，从第三个月开始每个月生一对，新生兔子3个月又每个月生一对，求20个月有多少兔子***
+*****************************************************************************************************************");
+            Console.WriteLine('\n');
             int a = 1, b = 1, c = 1;
             for(int i=3; i<=20; i++)
             {
                 a = b;
                 b = b + c;
                 c = a;
-                Console.WriteLine(b);
+                
             }
+            Console.WriteLine("兔子有:" + 2 * b + "只");
         }
         static void Training_6()
         {
-            int num = 1;
+            Console.Clear();
+            Console.WriteLine(@"****************************************************************
+                ****练习6:输出1∽100中能被3整除但不能被5整除的数,并统计 * **
+                ****************************************************************");
+            Console.WriteLine('\n');
+            int num = 0;
+            Console.Write("能被3整除但不能被5整除的数有：");
             for (int i=0; i<=100; i++)
-            {
-                
+            {                
                 if (i % 3 == 0 && i % 5 != 0)
                 {
                     Console.WriteLine(i);
                     num++;
                 }
             }
-            Console.WriteLine(num);
+            Console.WriteLine('\n'+"个数为："+num);
         }
         static void Training_7()
         {
-            for(int i = 0;i<=1000; i++)
+            Console.Clear();
+            Console.WriteLine(@"**********************************
+****练习7:输出1000以内的素数***
+**********************************");
+            Console.WriteLine('\n'+ "1000以内的素数");
+            for (int i = 0;i<=1000; i++)
             {
                 bool isFind=true;
                 for(int j=0; j <= 1000; j++)
@@ -195,12 +239,17 @@ namespace _020_练习4
                 }
                 if (isFind)
                 {
-                    Console.WriteLine(i);
+                    Console.WriteLine( i);
                 }
             }
         }
         static void Training_8()
         {
+            Console.Clear();
+            Console.WriteLine(@"***************************
+****练习8:九九乘法口诀***
+***************************");
+            Console.WriteLine('\n');
             int i = 0;
             int j = 0, num=1;
             for (; i <= 9; i++)
@@ -216,6 +265,11 @@ namespace _020_练习4
         }
         static void Training_9()
         {
+            Console.Clear();
+            Console.WriteLine(@"**************************
+****练习9:抛筛子100次***
+**************************");
+            Console.WriteLine('\n');
             int point1 = 0, point2 = 0, point3 = 0, point4 = 0, point5 = 0, point6 = 0;
             Random ran = new Random();//随机变量
             for (int i=1;i<=100;i++)
@@ -259,19 +313,23 @@ namespace _020_练习4
                             break;
                         }
                 }
-                Console.WriteLine("点数1出现的次数为："+point1);
-                Console.WriteLine("点数2出现的次数为："+point2);
-                Console.WriteLine("点数3出现的次数为："+point3);
-                Console.WriteLine("点数4出现的次数为："+point4);
-                Console.WriteLine("点数5出现的次数为："+point5);
-                Console.WriteLine("点数6出现的次数为："+point6);
+                
 
             }
-
+            Console.WriteLine("点数1出现的次数为：" + point1);
+            Console.WriteLine("点数2出现的次数为：" + point2);
+            Console.WriteLine("点数3出现的次数为：" + point3);
+            Console.WriteLine("点数4出现的次数为：" + point4);
+            Console.WriteLine("点数5出现的次数为：" + point5);
+            Console.WriteLine("点数6出现的次数为：" + point6);
         }
         static void Training_10()
         {
-
+            Console.Clear();
+            Console.WriteLine(@"********************************
+****练习10:输出1∽5的平方值***
+********************************");
+            Console.WriteLine('\n');
             Console.WriteLine("1：为for语句实现"+'\n'+ "2：为while语句实现" + '\n' + "3：为do-while语句实现" + '\n' );
             int num = Convert.ToInt32(Console.ReadLine());
             switch (num)
@@ -292,7 +350,7 @@ namespace _020_练习4
             {
                 for(int i=0; i<=5; i++)
                 {
-                    Console.WriteLine("1-5的的平方值为："+i * i);
+                    Console.WriteLine(i + "的平方值为：" +i * i);
                 }
             }
             num2:
@@ -300,7 +358,7 @@ namespace _020_练习4
                 int i = 1;
                 while (i == 6)
                 {
-                    Console.WriteLine("1-5的的平方值为：" + i * i);
+                    Console.WriteLine(i + "的平方值为：" + i * i);
                     i++;
                 }
             }
@@ -309,13 +367,18 @@ namespace _020_练习4
                 int i = 1;
                 do
                 {
-                    Console.WriteLine("1-5的的平方值为：" + i * i);
+                    Console.WriteLine(i+"的平方值为：" + i * i);
                     i++;
                 } while(i==5);
             }
         }
         static void Training_11()
         {
+            Console.Clear();
+            Console.WriteLine(@"***************
+****练习11:***
+***************");
+            Console.WriteLine('\n');
             int captial = 0, lower = 0, num = 0, other = 0;
             Console.WriteLine("请输入含有5个大写字母的字符串：");
             string str = Console.ReadLine();
@@ -343,7 +406,12 @@ namespace _020_练习4
         }
         static void Training_12()
         {
-           num: Console.WriteLine("输入任意一个数n");
+            Console.Clear();
+            Console.WriteLine(@"******************************************************************
+****练习12:输出1∽100中能被3整除但不能被5整除的数，并统计***
+******************************************************************");
+            Console.WriteLine('\n');
+            num: Console.WriteLine("输入任意一个数n");
             int num = Convert.ToInt32(Console.ReadLine());
             if (num >= 1)
             {
@@ -354,14 +422,21 @@ namespace _020_练习4
                 }
             }else if (num == 0)
             {
+                Console.WriteLine("您输入的数为0，请按回车键重新输入");
+                Console.ReadKey();
                 goto num;
             }else if (num < 0)
             {
+                Console.WriteLine("null");
                 return;
             }
         }
         static void Training_13()
         {
+            Console.Clear();
+            Console.WriteLine("施工中,按回车键返回");
+            Console.ReadKey();
+#if (false)
             int[] num ;
             num = new int[1000];
             int i=0, k=0, j=0;
@@ -380,6 +455,7 @@ namespace _020_练习4
             {
                 num[k] = i;
             }
+#endif
         }
     }
 }
